@@ -1,13 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="ToDoList">
 <head>
 	<meta charset="UTF-8">
-	<title>To Do List</title>
+	<title>To Do List</title>	
+	<link rel="stylesheet" href="css/materialize.min.css">
+	 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	 <link rel="stylesheet" href="css/main.css">
+</head>
+<body ng-controller="ToDoController">
+	<section class="container mg-top">				
+	  	<button class="btn waves-effect waves-light" type="button" ng-click="clean()">Reset Activities
+	    	<i class="material-icons">settings_backup_restore</i>
+	  	</button>
+	  	<div class="row mg-top">	  	
+			<form ng-submit="addAct()">
+				<div class="col s12 m6 l6">
+					<div class="input-field">					
+						<input class="app-input mg-bottom" type="text" ng-model="newAct.descripcion">
+						<label for="">Actividad:</label>
+					</div>
+					<div class="input-field">					
+						<input class="app-input mg-bottom" type="text" ng-model="newAct.fecha">
+						<label for="">Fecha:</label>
+					</div>
+					<button type="submit" class="btn waves-effect waves-light pink mg-top">
+						Guardar Actividad
+						<i class="material-icons">done</i>
+					</button>
+				</div>
+			</form>				
+			<div class="col s12 m6 l5">
+				<h3>Tareas:</h3>
+				<ul class="collapsible" id="activities" data-collapsible="accordion">
+					<li ng-repeat="act in todo">
+						<div class="collapsible-header"><i class="material-icons">assignment</i> {{act.descripcion}} </div>
+						<div class="collapsible-body">							
+							<p><span class="date">Fecha:</span><br><br> {{act.fecha}} </p>
+						</div>						
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
 	<script src="js/angular.min.js"></script>
 	<script src="js/angular-local-storage.min.js"></script>
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script src="js/materialize.min.js"></script>
 	<script src="js/main.js"></script>
-</head>
-<body>
-	
 </body>
 </html>
